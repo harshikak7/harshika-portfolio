@@ -81,6 +81,13 @@ body {
   line-height: 1.45;
 }
 
+.hero-text h1 span {
+  font-style: italic;
+  font-weight: 450;
+  font-weight: bold;
+  opacity: 0.95;
+}
+
 .accent {
   color: #2b6cb0;
 }
@@ -88,123 +95,96 @@ body {
 /* =====================
    WORK
 ===================== */
+/* =====================
+   WORK GRID
+===================== */
 
 .work {
-  padding: 80px 6vw 56px;
+  padding: 64px 6vw;
 }
 
 .work h2 {
   font-size: 24px;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
-/* =====================
-   SLIDER
-===================== */
-
-.slider {
-  overflow: hidden;
-}
-
-.slider-track {
-  display: flex;
-  transition: transform 0.6s ease;
-}
-
-/* =====================
-   FEATURED PROJECT
-===================== */
-
-.featured-project {
-  min-width: 100%;
-  background: #fdfbf7;
-  border-radius: 24px;
-  padding: 56px;
+.work-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 56px;
-  align-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
 }
 
-.featured-project h3 {
-  font-size: 28px;
-  font-weight: 500;
-  line-height: 1.35;
-  margin-bottom: 20px;
-  max-width: 520px;
+.work-card {
+  background: #fdfbf7;
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.work-card img {
+  width: 100%;
+    height: 260px;          /* tweak 240–280 if needed */
+  object-fit: cover; 
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.card-content {
+  flex-grow: 1;
+}
+
+.work-card h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+/* Smooth hover transition */
+.work-card {
+  transition: 
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Card lift */
+.work-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Button slight emphasis */
+.work-card:hover .project-btn {
+  opacity: 0.95;
 }
 
 .project-tags {
-  font-size: 13px;
-  color: #8a8a8a;
-  margin-bottom: 24px;
+  font-size: 12.5px;
+  color: #888;
+  margin-bottom: 10px;
 }
 
 .project-description {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #4a4a4a;
-  max-width: 480px;
-  margin-bottom: 28px;
-}
-
-.project-meta {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 36px;
-  padding-left: 12px;
-  border-left: 2px solid #e0ddd7;
+  font-size: 14.5px;
+  color: #444;
+  line-height: 1.6;
 }
 
 .project-btn {
+  margin-top: 16px;
+  align-self: flex-start;
+  padding: 10px 18px;
   background: #2b6cb0;
   color: white;
-  padding: 10px 20px;
-  font-size: 14px;
-  border-radius: 10px;
+  border-radius: 999px;
+  font-size: 13px;
   text-decoration: none;
 }
 
-.project-btn:hover {
-  opacity: 0.9;
+@media screen {
+  
 }
-
-.project-visual {
-  background: #e9e6e0;
-  border-radius: 20px;
-  padding: 28px;
-}
-
-.project-visual img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-/* =====================
-   SLIDER CONTROLS
-===================== */
-
-.slider-controls {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.slider-controls button {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid #ddd;
-  background: none;
-  cursor: pointer;
-}
-
-.slider-controls button.disabled {
-  opacity: 0.3;
-  pointer-events: none;
-}
-
 /* =====================
    ABOUT SECTION
 ===================== */
@@ -240,7 +220,7 @@ body {
 ===================== */
 
 .about-text {
-  font-size: 17px;
+  font-size: 22px;
   line-height: 1.7;
   color: #2e2e2e;
 }
@@ -376,8 +356,32 @@ body {
   .footer-links {
     gap: 24px;
   }
-}
+  /* =====================
+   MOBILE WORK SPACING FIX
+===================== */
+@media (max-width: 768px) {
+  .featured-project {
+    padding: 28px;
+    gap: 24px;
+  }
 
+  .featured-project h3 {
+    font-size: 22px;
+  }
+
+  .project-description {
+    margin-bottom: 16px;
+  }
+
+  .project-meta {
+    margin-bottom: 18px;
+  }
+
+  .project-btn {
+    margin-top: 4px;
+  }
+}
+}
 /* =====================
    RESPONSIVE
 ===================== */
@@ -440,5 +444,57 @@ body {
     padding: 6px 12px;
     font-size: 13px;
     border-radius: 999px;
+  }
+   .tools-track {
+    gap: 20px;                 /* tighter spacing */
+    padding-left: 4vw;
+    animation-duration: 4s;    /* MUCH faster */
+  }
+
+  .tool-logo {
+    min-width: 120px;          /* smaller cards */
+    height: 90px;
+  }
+
+  .tool-logo img {
+    max-width: 44px;
+    max-height: 44px;
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-project h3 {
+    font-size: 22px;
+    line-height: 1.32;
+  }
+
+  .project-description {
+    font-size: 14.5px;
+  }
+
+  .project-tags {
+    font-size: 12.5px;
+  }
+}
+
+/* MOBILE: one card + swipe */
+@media (max-width: 768px) {
+
+  .work-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 12px;
+  }
+
+  .work-card {
+    min-width: 85%;
+    scroll-snap-align: center;
+  }
+
+  /* Hide scrollbar */
+  .work-grid::-webkit-scrollbar {
+    display: none;
   }
 }
